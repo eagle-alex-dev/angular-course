@@ -7,11 +7,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'bytebank';
-  transferencia: any;
+  transferencias: any[] = [];
 
   // esse evento veio da classe nova-transferência e foi invocado no app-component HTML
   transferir($event) {
     console.log($event);
-    this.transferencia = $event; // associa o evento recebido a variável e repassa pro outro componente HTML
+    const transferencia = { ...$event, data: Date() };
+    this.transferencias.push(transferencia); // associa o evento recebido a variável e repassa pro outro componente HTML
   }
 }

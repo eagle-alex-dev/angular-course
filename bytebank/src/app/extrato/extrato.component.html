@@ -1,3 +1,7 @@
 <!-- a notação {{propriedade-da-classe}} serve para acessar diretamente o valor da propriedade da classe -->
-<p>Valor: {{ transferencia?.valor }}</p>
-<p>Destino: {{ transferencia?.destino }}</p>
+<div *ngFor="let transferencia of transferencias">
+  <!-- *ngFor é a diretiva que tem a função do FOR -->
+  <p>Destino: {{ transferencia?.data }}</p>
+  <p>Valor: {{ transferencia?.valor }}</p>
+  <p>Destino: {{ transferencia?.destino }}</p>
+</div>
