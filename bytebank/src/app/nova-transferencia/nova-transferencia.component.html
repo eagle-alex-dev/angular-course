@@ -1,5 +1,6 @@
 <section class="container">
   <form class="formulario" (ngSubmit)="transferir()">
+    <!-- notação entre parênteses (ngSubmit) é uma propriedade de evento -->
     <h2 class="formulario__titulo">Nova Transferência</h2>
 
     <div class="form-field">
@@ -11,6 +12,8 @@
         type="text"
         [(ngModel)]="valor"
       />
+      <!-- a notação [(ngModel)] - two way data bind - é usada pra passar o valor do input do form para uma variável da classe -->
+      <!-- a notação [ngModel] - property data bind - é usada pra passar o valor de uma variável da classe para o input do form -->
     </div>
 
     <div class="form-field">
