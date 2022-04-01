@@ -1,7 +1,17 @@
-<!-- a notação {{propriedade-da-classe}} serve para acessar diretamente o valor da propriedade da classe -->
-<div *ngFor="let transferencia of transferencias">
-  <!-- *ngFor é a diretiva que tem a função do FOR -->
-  <p>Destino: {{ transferencia?.data }}</p>
-  <p>Valor: {{ transferencia?.valor }}</p>
-  <p>Destino: {{ transferencia?.destino }}</p>
-</div>
+<table class="tabela">
+  <thead class="tabela__cabecalho">
+    <th class="tabela__cabecalho__conteudo">Data</th>
+    <th class="tabela__cabecalho__conteudo">Valor</th>
+    <th class="tabela__cabecalho__conteudo">Destino</th>
+  </thead>
+  <tbody>
+    <!-- *ngFor é a diretiva que tem a função do FOR -->
+    <tr class="tabela__linha" *ngFor="let transferencia of transferencias">
+      <!-- a notação {{propriedade-da-classe}} serve para acessar diretamente o valor da propriedade da classe -->
+      <td class="tabela__conteudo">{{ transferencia.data | date: "short" }}</td>
+      <!-- procurar por DatePipe na doc do Angular e locale_id -->
+      <td class="tabela__conteudo">{{ transferencia.valor | currency }}</td>
+      <td class="tabela__conteudo">{{ transferencia.destino }}</td>
+    </tr>
+  </tbody>
+</table>
