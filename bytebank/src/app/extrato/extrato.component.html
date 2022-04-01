@@ -4,7 +4,8 @@
     <th class="tabela__cabecalho__conteudo">Valor</th>
     <th class="tabela__cabecalho__conteudo">Destino</th>
   </thead>
-  <tbody>
+  <!-- tag ngIf serve como um IF -->
+  <tbody *ngIf="transferencias?.length > 0; else listaVazia">
     <!-- *ngFor é a diretiva que tem a função do FOR -->
     <tr class="tabela__linha" *ngFor="let transferencia of transferencias">
       <!-- a notação {{propriedade-da-classe}} serve para acessar diretamente o valor da propriedade da classe -->
@@ -15,3 +16,8 @@
     </tr>
   </tbody>
 </table>
+
+<!-- ng-template será o conteúdo que substituirá o tbody caso o ngIf não seja atendido -->
+<ng-template #listaVazia>
+  <p>Nenhuma transferência cadastrada</p>
+</ng-template>
