@@ -24,10 +24,9 @@ export class TransferenciaService {
   }
 
   // esse evento foi invocado pela classe app-component
-  adicionar(transferencia: any) {
+  adicionar(transferencia: Transferencia): Observable<Transferencia> {
     this.customizar(transferencia);
-    // associa o evento recebido a variável e repassa pro outro componente HTML
-    this.listaTransferencia.push(transferencia); // adiciona novas linhas ao extrato
+    return this.httpClient.post<Transferencia>(this.url, transferencia); // adiciona novas linhas ao extrato
   }
 
   private customizar(transferencia: any) {
