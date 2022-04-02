@@ -4,8 +4,14 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
   {
+    // lazy load feature, carregando sob demanda
     path: 'home',
-    loadChildren: () => import('./home/home.module').then((m) => m.HomeModule), // lazy load feature, carregando sob demanda
+    loadChildren: () => import('./home/home.module').then((m) => m.HomeModule),
+  },
+  {
+    path: 'animals',
+    loadChildren: () =>
+      import('./animals/animals.module').then((m) => m.AnimalsModule),
   },
 ];
 
