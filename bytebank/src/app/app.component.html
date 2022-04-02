@@ -1,0 +1,11 @@
+<header>
+  <!-- a diretiva routerLink carrega somente o componente listado na sua rota, ao invés de toda a página -->
+  <a routerLink="extrato">Bytebank</a>
+  <a routerLink="nova-transferencia" routerLinkActive="ativo"
+    >Nova Transferência</a
+  >
+  <!-- routerLinkActive utiliza a classe de CSS (ativo) quando a url estiver ativa - sendo usada -->
+</header>
+<main>
+  <router-outlet></router-outlet>
+</main>
