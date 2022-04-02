@@ -8,7 +8,13 @@
       placeholder="Nome do usuário"
       [(ngModel)]="usuario"
       name="usuario"
-    />
+      #campoUsuario="ngModel"
+      required
+    /><!-- a variável de referência #campoUsuario recebe o estado do input informado pela diretiva ngModel -->
+    <app-message
+      mensagem="Usuário obrigatório"
+      *ngIf="campoUsuario.invalid"
+    ></app-message>
   </div>
 
   <div class="form-group">
@@ -18,7 +24,13 @@
       placeholder="Senha"
       [(ngModel)]="senha"
       name="senha"
+      #campoSenha="ngModel"
+      required
     />
+    <app-message
+      mensagem="Senha obrigatória"
+      *ngIf="campoSenha.invalid"
+    ></app-message>
   </div>
 
   <div class="d-grid">
