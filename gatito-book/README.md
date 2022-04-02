@@ -31,3 +31,5 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 `ng g module --routing -d`
 `--routing`: cria o arquivo de rota automaticamente
 `-d`: primeiro simula a criação dos arquivos e mostra na tela os nomes e pastas
+
+Regras de negócio deve ser colocada no `service`
