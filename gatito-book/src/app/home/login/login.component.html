@@ -1,6 +1,7 @@
 <h4 class="text-center">Login</h4>
 
-<form class="form mt-4 d-grid gap-2" (ngSubmit)="login()">
+<form class="form mt-4 d-grid gap-2" (ngSubmit)="login()" #loginForm="ngForm">
+  <!-- ngForm carrega o estado do formulário inteiro, assim como o ngModel carrega do componente onde foi adicionado -->
   <div class="form-group">
     <input
       type="text"
@@ -13,7 +14,7 @@
     /><!-- a variável de referência #campoUsuario recebe o estado do input informado pela diretiva ngModel -->
     <app-message
       mensagem="Usuário obrigatório"
-      *ngIf="campoUsuario.invalid"
+      *ngIf="campoUsuario.invalid && campoUsuario.touched"
     ></app-message>
   </div>
 
@@ -29,11 +30,18 @@
     />
     <app-message
       mensagem="Senha obrigatória"
-      *ngIf="campoSenha.invalid"
+      *ngIf="campoSenha.invalid && campoSenha.touched"
     ></app-message>
   </div>
 
   <div class="d-grid">
-    <button type="submit" class="btn btn-primary btn-block">Login</button>
+    <button
+      [disabled]="loginForm.invalid"
+      type="submit"
+      class="btn btn-primary btn-block"
+    >
+      <!-- [disabled] é usado entre colchetes para aceitar uma expressão -->
+      Login
+    </button>
   </div>
 </form>
