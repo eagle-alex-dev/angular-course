@@ -1,3 +1,4 @@
+import { UsuarioExisteService } from './usuario-existe.service';
 import { NovoUsuarioService } from './novo-usuario.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -14,7 +15,8 @@ export class NovoUsuarioComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder, // usado por causa do ReactiveForms
-    private novoUsuarioService: NovoUsuarioService
+    private novoUsuarioService: NovoUsuarioService,
+    private UsuarioExisteService: UsuarioExisteService
   ) {}
 
   ngOnInit(): void {
@@ -29,12 +31,18 @@ export class NovoUsuarioComponent implements OnInit {
         ],
       ],
       fullName: ['', [Validators.required, Validators.minLength(4)]],
-      userName: ['', [minusculoValidator]], // validação customizada
+      // validação customizada (minusculo) e validação assíncrona (usuarioExistente)
+      userName: [
+        '',
+        [minusculoValidator],
+        [this.UsuarioExisteService.usuarioJaExiste()],
+      ],
       password: [''],
     });
   }
 
   cadastrar() {
+    // guarda os valores dos campos do formulário na variável
     const novoUsuario = this.novoUsuarioForm.getRawValue() as NovoUsuario;
     console.log(novoUsuario);
   }

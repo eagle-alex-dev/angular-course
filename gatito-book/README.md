@@ -32,4 +32,9 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 `--routing`: cria o arquivo de rota automaticamente
 `-d`: primeiro simula a criação dos arquivos e mostra na tela os nomes e pastas
 
-Regras de negócio deve ser colocada no `service`
+Regras de negócio deve ser colocada no `service`.
+
+Existem 2 tipos de formulários no Angular: O Template e o ReactiveForm.
+No Template, a maioria da parte da lógica fica no arquivo HTML do componente.
+No Reactive, a maioria da parte lógica fica no arquivo TS do componente.
+
