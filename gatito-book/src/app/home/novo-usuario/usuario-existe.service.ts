@@ -21,9 +21,9 @@ export class UsuarioExisteService {
           this.novoUsuarioService.verificaUsuarioExistente(nomeUsuario)
         ),
         // o map pra trocar o resultado
-        map((usuarioExiste) => {
-          usuarioExiste ? { usuarioExistente: true } : null;
-        }),
+        map((usuarioExiste) =>
+          usuarioExiste ? { usuarioExistente: true } : null
+        ),
         // o first encerra o fluxo do observable
         first()
       );
