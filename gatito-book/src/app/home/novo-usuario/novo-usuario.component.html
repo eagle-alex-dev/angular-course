@@ -1,18 +1,67 @@
 <h4 class="text-center">Registre-se e mostre seu pet ao mundo!</h4>
-
-<form class="form mt-4 d-grid gap-2">
+<!-- usando ReactiveForms -->
+<!-- a diretiva [formGroup] faz o link com meu componente novoUsuarioForm -->
+<form
+  class="form mt-4 d-grid gap-2"
+  [formGroup]="novoUsuarioForm"
+  (submit)="cadastrar()"
+>
   <div class="form-group">
-    <input type="text" placeholder="e-mail" class="form-control" />
+    <!-- form-group é a classe usada para ReactiveForms -->
+    <!-- formControlName é a diretiva que faz o bind do componente com a variável do component.ts -->
+    <!-- deve ser usada também a classe form-control -->
+    <input
+      type="text"
+      placeholder="e-mail"
+      class="form-control"
+      formControlName="email"
+    />
+    <app-message
+      *ngIf="novoUsuarioForm.get('email')?.errors?.['required'] && novoUsuarioForm.get('email')?.touched"
+      mensagem="Email obrigatório"
+    ></app-message>
+    <app-message
+      *ngIf="novoUsuarioForm.get('email')?.errors?.['email'] && novoUsuarioForm.get('email')?.touched"
+      mensagem="É-mail no formato incorreto"
+    ></app-message>
   </div>
   <div class="form-group">
-    <input type="text" placeholder="Nome completo" class="form-control" />
+    <input
+      type="text"
+      placeholder="Nome completo"
+      class="form-control"
+      formControlName="fullName"
+    />
+    <app-message
+      *ngIf="
+        novoUsuarioForm.get('fullName')?.errors &&
+        novoUsuarioForm.get('fullName')?.touched
+      "
+      mensagem="Nome incorreto"
+    ></app-message>
   </div>
   <div class="form-group">
-    <input type="text" placeholder="Usuário" class="form-control" />
+    <input
+      type="text"
+      placeholder="Usuário"
+      class="form-control"
+      formControlName="userName"
+    />
+    <app-message
+      *ngIf="novoUsuarioForm.get('userName')?.errors?.['minusculo'] && novoUsuarioForm.get('userName')?.touched"
+      mensagem="Usuário deve ser em letra minúscula"
+    ></app-message>
   </div>
   <div class="form-group">
-    <input type="password" placeholder="Senha" class="form-control" />
+    <input
+      type="password"
+      placeholder="Senha"
+      class="form-control"
+      formControlName="password"
+    />
   </div>
 
   <button class="btn btn-primary btn-block">Cadastrar</button>
 </form>
+
+<p>Já é um usuário? <a [routerLink]="['']">Login</a></p>
